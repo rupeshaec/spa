@@ -17,7 +17,7 @@ The main parts of the template are:
     mvn clean install -PautoInstallPackage -Padobe-public
     
 ## Deploy content package
-    content-aem.zip
+    content.package/content-aem.zip
 
 ## Maven settings
 
