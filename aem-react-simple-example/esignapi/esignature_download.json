@@ -1,0 +1,923 @@
+{
+  "info": {
+    "title": "Esignature Download",
+    "contact": {
+      "name": "Priyanka",
+      "email": "priyanka.gandotra@nab.com.au"
+    },
+    "license": {
+      "name": "(C) 2020 National Australia Bank. [All rights reserved]. This product and related documentation are protected by copyright restricting its use, copying, distribution, and decompilation. No part of this product or related documentation may be reproduced in any form by any means without prior written authorization of National Australia Bank. Unless otherwise arranged, third parties may not have access to this product or related documents."
+    },
+    "version": "v1.1",
+    "x-appId": "PL0461",
+    "description": "ESignature APIs\n\n# Authentication\n\n<!-- ReDoc-Inject: <security-definitions> -->"
+  },
+  "paths": {
+    "/envelopes/{envelopeid}/documents/{documentid}": {
+      "get": {
+        "summary": "Download single or all documents in base64 format",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "properties": {
+                    "documentInBase64": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "example": "name",
+                            "description": "The field that caused the error. If the field is in the body, set this value to the JSON pointer to that field. Required for client-side errors"
+                          },
+                          "issue": {
+                            "type": "string",
+                            "example": "name is required",
+                            "description": "The reason for the error"
+                          },
+                          "value": {
+                            "type": "string",
+                            "example": null,
+                            "description": "The value of the field that caused the error"
+                          },
+                          "location": {
+                            "type": "string",
+                            "example": "body",
+                            "description": "The location of the field that caused the error. A valid value is body, path, or query. Default is body."
+                          }
+                        }
+                      },
+                      "description": "Additional details for the error. Mandatory for client side 4xx errors"
+                    },
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Errors to be handled under 400 are, <br> <ul><li>API-454 - Validation Error - Put the validation error message in \"messageAttribute\" field<li>API-430 - Unspecified Error - Thrown for all edge cases, where the exception could NOT be determined<li>API-420 - Invalid request - Thrown for all edge cases, where the expection could NOT be determined<li>API-421 - Invalid request body - Thrown for invalid JSON payload in the request object (Data type error, extra or missing fields)"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "example": "name",
+                            "description": "The field that caused the error. If the field is in the body, set this value to the JSON pointer to that field. Required for client-side errors"
+                          },
+                          "issue": {
+                            "type": "string",
+                            "example": "name is required",
+                            "description": "The reason for the error"
+                          },
+                          "value": {
+                            "type": "string",
+                            "example": null,
+                            "description": "The value of the field that caused the error"
+                          },
+                          "location": {
+                            "type": "string",
+                            "example": "body",
+                            "description": "The location of the field that caused the error. A valid value is body, path, or query. Default is body."
+                          }
+                        }
+                      },
+                      "description": "Additional details for the error. Mandatory for client side 4xx errors"
+                    },
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Errors to be handled under 401 are, <br> <ul><li>API-449 - Validation Error - Put the validation error message in \"details\" field"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "example": "name",
+                            "description": "The field that caused the error. If the field is in the body, set this value to the JSON pointer to that field. Required for client-side errors"
+                          },
+                          "issue": {
+                            "type": "string",
+                            "example": "name is required",
+                            "description": "The reason for the error"
+                          },
+                          "value": {
+                            "type": "string",
+                            "example": null,
+                            "description": "The value of the field that caused the error"
+                          },
+                          "location": {
+                            "type": "string",
+                            "example": "body",
+                            "description": "The location of the field that caused the error. A valid value is body, path, or query. Default is body."
+                          }
+                        }
+                      },
+                      "description": "Additional details for the error. Mandatory for client side 4xx errors"
+                    },
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Errors to be handled under 403 are, <br> <ul><li>API-465 - Validation Error - Put the validation error message in \"details\" field"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Errors to be handled under 404 are <ul> <li>API-422 - Invalid API Version </li> <li>API-2189 - Resource Not Found </li></ul>"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "example": "name",
+                            "description": "The field that caused the error. If the field is in the body, set this value to the JSON pointer to that field. Required for client-side errors"
+                          },
+                          "issue": {
+                            "type": "string",
+                            "example": "name is required",
+                            "description": "The reason for the error"
+                          },
+                          "value": {
+                            "type": "string",
+                            "example": null,
+                            "description": "The value of the field that caused the error"
+                          },
+                          "location": {
+                            "type": "string",
+                            "example": "body",
+                            "description": "The location of the field that caused the error. A valid value is body, path, or query. Default is body."
+                          }
+                        }
+                      },
+                      "description": "Additional details for the error. Mandatory for client side 4xx errors"
+                    },
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Errors to be handled under 429 are, <br> <ul><li>API-430 - Validation Error - Put the validation error message in \"details\" field"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          },
+          "504": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Server Timeout"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "envelopeid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "documentid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Provide documentId for downloading single document and 'all' for downloading all documents as zip file"
+          }
+        ],
+        "x-swagstar": {
+          "name": "DownloadEnvelopeDocument",
+          "apiAuth": "jwt",
+          "plugins": {
+            "openid-connect-v2": {
+              "acr": [
+                "2"
+              ],
+              "scopes_required": [
+                "docmgmt:esignature:downloaddocument"
+              ],
+              "audience_required": [
+                "staffapi",
+                "nabapi"
+              ]
+            },
+            "request-size-limiting": {
+              "allowed_payload_size": 100
+            }
+          },
+          "apiTarget": [
+            "service"
+          ]
+        }
+      },
+      "x-swagstar": {
+        "name": "RetrieveDocumentByEnvelopeId",
+        "plugins": {
+          "route-rate-limiting": {
+            "second": 50
+          }
+        }
+      }
+    },
+    "/accounts/{accountid}/envelopes/{envelopeid}/documents/all": {
+      "get": {
+        "summary": "Download all documents in base64 format",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "properties": {
+                    "documentInBase64": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "example": "name",
+                            "description": "The field that caused the error. If the field is in the body, set this value to the JSON pointer to that field. Required for client-side errors"
+                          },
+                          "issue": {
+                            "type": "string",
+                            "example": "name is required",
+                            "description": "The reason for the error"
+                          },
+                          "value": {
+                            "type": "string",
+                            "example": null,
+                            "description": "The value of the field that caused the error"
+                          },
+                          "location": {
+                            "type": "string",
+                            "example": "body",
+                            "description": "The location of the field that caused the error. A valid value is body, path, or query. Default is body."
+                          }
+                        }
+                      },
+                      "description": "Additional details for the error. Mandatory for client side 4xx errors"
+                    },
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Errors to be handled under 400 are, <br> <ul><li>API-454 - Validation Error - Put the validation error message in \"messageAttribute\" field<li>API-430 - Unspecified Error - Thrown for all edge cases, where the exception could NOT be determined<li>API-420 - Invalid request - Thrown for all edge cases, where the expection could NOT be determined<li>API-421 - Invalid request body - Thrown for invalid JSON payload in the request object (Data type error, extra or missing fields)"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "example": "name",
+                            "description": "The field that caused the error. If the field is in the body, set this value to the JSON pointer to that field. Required for client-side errors"
+                          },
+                          "issue": {
+                            "type": "string",
+                            "example": "name is required",
+                            "description": "The reason for the error"
+                          },
+                          "value": {
+                            "type": "string",
+                            "example": null,
+                            "description": "The value of the field that caused the error"
+                          },
+                          "location": {
+                            "type": "string",
+                            "example": "body",
+                            "description": "The location of the field that caused the error. A valid value is body, path, or query. Default is body."
+                          }
+                        }
+                      },
+                      "description": "Additional details for the error. Mandatory for client side 4xx errors"
+                    },
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Errors to be handled under 401 are, <br> <ul><li>API-449 - Validation Error - Put the validation error message in \"details\" field"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "example": "name",
+                            "description": "The field that caused the error. If the field is in the body, set this value to the JSON pointer to that field. Required for client-side errors"
+                          },
+                          "issue": {
+                            "type": "string",
+                            "example": "name is required",
+                            "description": "The reason for the error"
+                          },
+                          "value": {
+                            "type": "string",
+                            "example": null,
+                            "description": "The value of the field that caused the error"
+                          },
+                          "location": {
+                            "type": "string",
+                            "example": "body",
+                            "description": "The location of the field that caused the error. A valid value is body, path, or query. Default is body."
+                          }
+                        }
+                      },
+                      "description": "Additional details for the error. Mandatory for client side 4xx errors"
+                    },
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Errors to be handled under 403 are, <br> <ul><li>API-465 - Validation Error - Put the validation error message in \"details\" field"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Errors to be handled under 404 are <ul> <li>API-422 - Invalid API Version </li> <li>API-2189 - Resource Not Found </li></ul>"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "example": "name",
+                            "description": "The field that caused the error. If the field is in the body, set this value to the JSON pointer to that field. Required for client-side errors"
+                          },
+                          "issue": {
+                            "type": "string",
+                            "example": "name is required",
+                            "description": "The reason for the error"
+                          },
+                          "value": {
+                            "type": "string",
+                            "example": null,
+                            "description": "The value of the field that caused the error"
+                          },
+                          "location": {
+                            "type": "string",
+                            "example": "body",
+                            "description": "The location of the field that caused the error. A valid value is body, path, or query. Default is body."
+                          }
+                        }
+                      },
+                      "description": "Additional details for the error. Mandatory for client side 4xx errors"
+                    },
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Errors to be handled under 429 are, <br> <ul><li>API-430 - Validation Error - Put the validation error message in \"details\" field"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          },
+          "504": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errorId": {
+                      "type": "string",
+                      "example": "API-421",
+                      "description": "Human readable, unique name or unique Id of the error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request body",
+                      "description": "Message describing the error"
+                    },
+                    "informationLink": {
+                      "type": "string",
+                      "description": "URI for detailed information related to this error for the developer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Server Timeout"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "envelopeid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "accountid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "x-swagstar": {
+          "name": "DownloadDocusignEnvelope",
+          "apiAuth": "jwt",
+          "plugins": {
+            "openid-connect-v2": {
+              "acr": [
+                "2"
+              ],
+              "scopes_required": [
+                "docmgmt:esignature:docusigndownload"
+              ],
+              "audience_required": [
+                "staffapi",
+                "nabapi"
+              ]
+            }
+          },
+          "apiTarget": [
+            "service"
+          ]
+        }
+      },
+      "x-swagstar": {
+        "name": "DownloadDocusignEnvelope",
+        "plugins": {
+          "route-rate-limiting": {
+            "second": 50
+          }
+        }
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "https://stg08.docmgmt.intapi.extnp.national.com.au/v1/docmgmt"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "StandardError": {
+        "type": "object",
+        "properties": {
+          "errorId": {
+            "type": "string",
+            "example": "API-421",
+            "description": "Human readable, unique name or unique Id of the error"
+          },
+          "message": {
+            "type": "string",
+            "example": "Invalid request body",
+            "description": "Message describing the error"
+          },
+          "informationLink": {
+            "type": "string",
+            "description": "URI for detailed information related to this error for the developer"
+          }
+        }
+      },
+      "ValidationError": {
+        "type": "object",
+        "properties": {
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "example": "name",
+                  "description": "The field that caused the error. If the field is in the body, set this value to the JSON pointer to that field. Required for client-side errors"
+                },
+                "issue": {
+                  "type": "string",
+                  "example": "name is required",
+                  "description": "The reason for the error"
+                },
+                "value": {
+                  "type": "string",
+                  "example": null,
+                  "description": "The value of the field that caused the error"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "body",
+                  "description": "The location of the field that caused the error. A valid value is body, path, or query. Default is body."
+                }
+              }
+            },
+            "description": "Additional details for the error. Mandatory for client side 4xx errors"
+          },
+          "errorId": {
+            "type": "string",
+            "example": "API-421",
+            "description": "Human readable, unique name or unique Id of the error"
+          },
+          "message": {
+            "type": "string",
+            "example": "Invalid request body",
+            "description": "Message describing the error"
+          },
+          "informationLink": {
+            "type": "string",
+            "description": "URI for detailed information related to this error for the developer"
+          }
+        }
+      },
+      "DownloadDocumentResponseBase64": {
+        "type": "string",
+        "properties": {
+          "documentInBase64": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "parameters": {
+      "Content-Type": {
+        "in": "header",
+        "name": "Content-Type",
+        "schema": {
+          "type": "string"
+        },
+        "required": true,
+        "description": "application/json"
+      }
+    },
+    "securitySchemes": {
+      "nab_auth": {
+        "type": "oauth2",
+        "flows": {
+          "x-all": {
+            "scopes": {
+              "docmgmt:esignature:docusigndownload": "Docusign Download Envelope",
+              "docmgmt:esignature:downloaddocument": "Download Envelope"
+            }
+          }
+        },
+        "description": "Esignature Api"
+      }
+    }
+  },
+  "x-swagstar": {
+    "category": "Document Management:Document Services"
+  },
+  "externalDocs": {
+    "url": "https://confluence.dss.ext.national.com.au/pages/viewpage.action?pageId=639603273"
+  }
+}
